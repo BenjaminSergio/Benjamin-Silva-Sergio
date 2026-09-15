@@ -10,6 +10,7 @@
             --secondary-color: #2980b9;
             --bg-color: #f4f4f9;
             --text-color: #333;
+            --accent-color: #e74c3c;
         }
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -34,6 +35,21 @@
             opacity: 0.9;
             margin-top: 0.5rem;
         }
+        .social-links {
+            margin-top: 1rem;
+        }
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            background-color: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
         .container { 
             max-width: 800px; 
             margin: 2rem auto; 
@@ -56,6 +72,16 @@
             border-bottom: 2px solid var(--bg-color);
             padding-bottom: 0.5rem;
         }
+        h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+        .date-location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
         ul {
             list-style-type: square;
             padding-left: 1.2rem;
@@ -76,25 +102,37 @@
 <body>
     <header>
         <h1>Benjamin Silva Sergio</h1>
-        <p>Electrical Engineering Master's Student & IT Specialist</p>
+        <p>Computer Scientist & Electrical Engineering Master's Student</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/benjamin-silva-sergio" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+        </div>
     </header>
     
     <div class="container">
         <div class="card">
-            <h2>About Me</h2>
-            <p>I am currently a Master's student in Electrical Engineering at UFES (Universidade Federal do Espírito Santo). My academic research and studies are geared toward advanced electrical systems, with a strong focus on the implementation and analysis of Smart Grids.</p>
+            <h2>Academic Background</h2>
+            <h3>Master's in Electrical Engineering</h3>
+            <p class="date-location">UFES (Universidade Federal do Espírito Santo) | Vitória, ES</p>
+            <p>Currently pursuing my Master's degree, focusing on advanced electrical systems and Smart Grids. This class activity represents the intersection of my software development background and energy infrastructure studies.</p>
+            
+            <h3>Bachelor's in Computer Science</h3>
+            <p class="date-location">UFES - CEUNES | São Mateus, ES</p>
+            <p>Graduated with a strong foundation in software engineering, algorithms, and computing technology.</p>
         </div>
         
         <div class="card">
             <h2>Professional Experience</h2>
-            <p>I am an entrepreneur based in Lajinha, Minas Gerais, where I operate a business dedicated to IT support. My professional services cover computer repair, hardware maintenance, and the configuration of peripheral equipment.</p>
+            <h3>IT Services & Hardware Entrepreneur</h3>
+            <p class="date-location">Lajinha, MG | Jan 2026 - Present</p>
+            <p>Founder and operator of an independent tech business providing specialized computer repair, hardware maintenance, and peripheral equipment configuration services to the local community.</p>
         </div>
         
         <div class="card">
-            <h2>Achievements & Credentials</h2>
+            <h2>Projects & Achievements</h2>
             <ul>
-                <li><strong>Hackathon ONE 2026:</strong> Credential issuer by ONE.</li>
-                <li><strong>Smart Grids:</strong> Active participant in academic projects integrating modern web technologies with electrical grid management.</li>
+                <li><strong>FlightOnTime FYI:</strong> Co-developed an intelligent prediction system for flight delays, applying technical knowledge to solve real-world logistical data challenges.</li>
+                <li><strong>Hackathon ONE 2026:</strong> Official credential earner for participation and development.</li>
+                <li><strong>Smart Grids Integration:</strong> Active participant in bridging modern computer science solutions with electrical engineering challenges.</li>
             </ul>
         </div>
     </div>
