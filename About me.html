@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Silva Sergio | Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #2980b9;
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+        }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6;
+        }
+        header { 
+            background-color: var(--primary-color); 
+            color: #fff; 
+            padding: 3rem 1rem; 
+            text-align: center; 
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+        }
+        .card { 
+            background: #fff; 
+            padding: 2rem; 
+            margin-bottom: 1.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 { 
+            color: var(--secondary-color); 
+            margin-top: 0;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 1.2rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .footer { 
+            text-align: center; 
+            margin-top: 3rem; 
+            padding: 1.5rem; 
+            font-size: 0.9rem; 
+            color: #666; 
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Benjamin Silva Sergio</h1>
+        <p>Electrical Engineering Master's Student & IT Specialist</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>About Me</h2>
+            <p>I am currently a Master's student in Electrical Engineering at UFES (Universidade Federal do Espírito Santo). My academic research and studies are geared toward advanced electrical systems, with a strong focus on the implementation and analysis of Smart Grids.</p>
+        </div>
+        
+        <div class="card">
+            <h2>Professional Experience</h2>
+            <p>I am an entrepreneur based in Lajinha, Minas Gerais, where I operate a business dedicated to IT support. My professional services cover computer repair, hardware maintenance, and the configuration of peripheral equipment.</p>
+        </div>
+        
+        <div class="card">
+            <h2>Achievements & Credentials</h2>
+            <ul>
+                <li><strong>Hackathon ONE 2026:</strong> Credential issuer by ONE.</li>
+                <li><strong>Smart Grids:</strong> Active participant in academic projects integrating modern web technologies with electrical grid management.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer">
+        &copy; 2026 Benjamin Silva Sergio | Smart Grids Class Activity
+    </div>
+</body>
+</html>
