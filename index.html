@@ -1,144 +1,527 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benjamin Silva Sergio | Portfolio</title>
+    <title>Benjamin Silva Sergio | Atividade de Mestrado em Smart Grids</title>
+    <link rel="stylesheet" href="avatar-assistant.css">
     <style>
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #2980b9;
             --bg-color: #f4f4f9;
-            --text-color: #333;
+            --text-color: #2d3748;
             --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --border-color: #e2e8f0;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Tahoma, Geneva, Verdana, sans-serif; 
             background-color: var(--bg-color); 
             color: var(--text-color); 
             margin: 0; 
             padding: 0; 
-            line-height: 1.6;
+            line-height: 1.65;
         }
+
+        /* Barra de Navegação Global */
+        .navbar {
+            background-color: #1a252f;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .nav-avatar-mini {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #38bdf8;
+            background-color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 0.4rem 0.85rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #fff;
+            background-color: var(--secondary-color);
+        }
+
         header { 
-            background-color: var(--primary-color); 
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a252f 100%); 
             color: #fff; 
-            padding: 3rem 1rem; 
+            padding: 2.8rem 1rem 2.2rem; 
             text-align: center; 
         }
+
+        .badge-tag-activity {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            color: #93c5fd;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 0.35rem 0.95rem;
+            border-radius: 20px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Avatar Interativo com Estilo Nintendo Wii Mii */
+        .avatar-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .avatar-wrapper:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.6);
+        }
+
+        .avatar-img {
+            width: 145px;
+            height: 145px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 3px solid #fff;
+            background-color: #e2e8f0;
+        }
+
+        .avatar-wrapper.speaking {
+            animation: speakingPulse 1.3s infinite ease-in-out, miiNod 0.7s infinite ease-in-out;
+            background: linear-gradient(135deg, #10b981, #38bdf8);
+        }
+
+        @keyframes speakingPulse {
+            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
+        @keyframes miiNod {
+            0%, 100% { transform: translateY(0) scale(1.05); }
+            50% { transform: translateY(-5px) scale(1.07); }
+        }
+
+        .speech-status-btn {
+            margin-top: 0.9rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 0.45rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .speech-status-btn:hover {
+            background-color: var(--secondary-color);
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+        }
+
+        .speech-waves {
+            display: none;
+            align-items: center;
+            gap: 3px;
+            height: 14px;
+        }
+
+        .avatar-wrapper.speaking ~ .speech-status-btn .speech-waves,
+        .speech-status-btn.active .speech-waves {
+            display: inline-flex;
+        }
+
+        .wave-bar {
+            width: 3px;
+            height: 100%;
+            background-color: #38bdf8;
+            border-radius: 2px;
+            animation: waveBounce 0.9s infinite ease-in-out;
+        }
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes waveBounce {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+
+        .speech-tooltip {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            margin-top: 0.35rem;
+        }
+
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.3rem;
         }
+
         header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-top: 0.4rem;
+            color: #e2e8f0;
         }
+
         .social-links {
-            margin-top: 1rem;
+            margin-top: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
+
         .social-links a {
             color: #fff;
             text-decoration: none;
             background-color: var(--secondary-color);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.1rem;
             border-radius: 4px;
             font-weight: bold;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.92rem;
         }
+
         .social-links a:hover {
-            background-color: var(--accent-color);
+            transform: translateY(-2px);
         }
+
+        .btn-article { background-color: #0284c7 !important; }
+        .btn-sim { background-color: #2563eb !important; }
+        .btn-innov { background-color: #16a34a !important; }
+
         .container { 
-            max-width: 800px; 
+            max-width: 900px; 
             margin: 2rem auto; 
             padding: 0 1rem; 
         }
+
+        /* Banner de Enquadramento Acadêmico e Isenção de Autoria */
+        .academic-notice-banner {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+            border: 1px solid #bfdbfe;
+            border-left: 5px solid var(--secondary-color);
+            padding: 1.3rem 1.6rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: #1e3a8a;
+            font-size: 0.94rem;
+            line-height: 1.6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .academic-notice-banner h3 {
+            margin-top: 0;
+            color: #1e40af;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-tag-thirdparty {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-tag-authorial {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
         .card { 
             background: #fff; 
             padding: 2rem; 
-            margin-bottom: 1.5rem; 
+            margin-bottom: 1.8rem; 
             border-radius: 8px; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            border: 1px solid var(--border-color);
             transition: transform 0.2s ease;
         }
+
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
+
         h2 { 
             color: var(--secondary-color); 
             margin-top: 0;
-            border-bottom: 2px solid var(--bg-color);
+            border-bottom: 2px solid #edf2f7;
             padding-bottom: 0.5rem;
         }
+
         h3 {
             color: var(--primary-color);
             margin-bottom: 0.2rem;
         }
+
         .date-location {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 1rem;
             font-style: italic;
         }
+
         ul {
             list-style-type: square;
             padding-left: 1.2rem;
         }
+
         li {
             margin-bottom: 0.5rem;
         }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.55rem 1.1rem;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.92rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .action-link:hover {
+            opacity: 0.9;
+        }
+
         .footer { 
             text-align: center; 
             margin-top: 3rem; 
-            padding: 1.5rem; 
+            padding: 1.8rem; 
             font-size: 0.9rem; 
             color: #666; 
             background: #fff;
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
+
+    <!-- Navegação Global -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <img src="avatar.png" alt="Avatar Benjamin" class="nav-avatar-mini">
+            Benjamin Silva Sergio | Smart Grids
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">Início (Portfólio)</a>
+            <a href="article.html" class="nav-link">Artigo Científico</a>
+            <a href="simulation.html" class="nav-link">Simulação Interativa</a>
+            <a href="innovation.html" class="nav-link">Inovações em Smart Grids</a>
+        </div>
+    </nav>
+
     <header>
+        <div class="badge-tag-activity">🎓 Atividade Acadêmica • Mestrado em Engenharia Elétrica (PPGEE / UFES)</div>
+
+        <!-- Avatar Interativo com Estilo Nintendo Wii Mii -->
+        <div class="avatar-container">
+            <div class="avatar-wrapper" id="avatarWrapper" onclick="toggleSpeech()" title="Clique no meu avatar Mii para que o site fale com você!">
+                <img src="avatar.png" alt="Avatar Nintendo Wii de Benjamin Silva Sergio" class="avatar-img" id="avatarImg">
+            </div>
+            <button class="speech-status-btn" id="speechBtn" onclick="toggleSpeech()" title="Clique para ouvir ou pausar a leitura">
+                <span id="speechIcon">🎙️</span>
+                <span id="speechTextLabel">Ouvir Apresentação em Voz</span>
+                <span class="speech-waves" id="speechWaves">
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                </span>
+            </button>
+            <span class="speech-tooltip">💡 Clique no meu avatar Mii para que o site leia seu conteúdo em voz alta!</span>
+        </div>
+
         <h1>Benjamin Silva Sergio</h1>
-        <p>Computer Scientist & Electrical Engineering Master's Student</p>
+        <p>Cientista da Computação & Mestrando em Engenharia Elétrica (Smart Grids - UFES)</p>
+        
         <div class="social-links">
             <a href="https://www.linkedin.com/in/benjamin-silva-sergio" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            <a href="article.html" class="btn-article">📄 Artigo de Terceiros (Nature)</a>
+            <a href="simulation.html" class="btn-sim">🧪 Simulação Prática</a>
+            <a href="innovation.html" class="btn-innov">💡 Inovações em Smart Grids</a>
         </div>
     </header>
     
     <div class="container">
+
+        <!-- BANNER DE ENQUADRAMENTO ACADÊMICO E ESCLARECIMENTO DE AUTORIA -->
+        <div class="academic-notice-banner">
+            <h3>🏛️ Contextualização Acadêmica da Atividade</h3>
+            <p>Este ambiente web foi desenvolvido como trabalho prático para a disciplina de <strong>Redes Elétricas Inteligentes (Smart Grids)</strong> do Programa de Pós-Graduação em Engenharia Elétrica (PPGEE) da <strong>Universidade Federal do Espírito Santo (UFES)</strong>.</p>
+            <p><strong>Esclarecimento sobre o Artigo Científico:</strong> O artigo em estudo (<em>Laghari et al., 2025</em>, publicado na revista internacional <em>Nature Scientific Reports</em>) <strong>é de autoria de terceiros</strong> e foi selecionado como <strong>objeto de estudo, comparação de desempenho e análise crítica</strong>. O objetivo desta atividade é reproduzir suas simulações computacionais e investigar como suas ideias de segurança Zero Trust e Inteligência Artificial podem ser estendidas para solucionar desafios específicos do setor elétrico brasileiro e das Smart Grids.</p>
+        </div>
+
+        <!-- CARD 1: ARTIGO DA NATURE (DE TERCEIROS) -->
+        <div class="card" style="border-left: 5px solid #0284c7;">
+            <span class="badge-tag-thirdparty">Estudo de Terceiros • Objeto de Comparação e Análise</span>
+            <h2>📄 Artigo Científico Internacional Selecionado</h2>
+            <h3>A novel and secure artificial intelligence enabled zero trust intrusion detection in industrial internet of things architecture</h3>
+            <p class="date-location">Autores: Asif Ali Laghari, Abdullah Ayub Khan et al. • Nature Portfolio • Scientific Reports (2025) | DOI: 10.1038/s41598-025-11738-9</p>
+            <p><strong>Nota de Autoria:</strong> Este artigo científico <strong>não é de autoria de Benjamin Silva Sergio</strong>. Ele constitui uma publicação independente de terceiros adotada como referência acadêmica para esta atividade de mestrado. Analisamos sua metodologia de detecção de intrusões via Zero Trust ("Never Trust, Always Verify"), suas formulações matemáticas (Equações 1 a 7) e seus resultados com datasets públicos (CIC-IDS e UGR'16) como ponto de partida comparativo.</p>
+            <div style="margin-top: 1rem;">
+                <a href="article.html" class="action-link" style="background-color: #0284c7;">Acessar Análise Crítica do Artigo de Terceiros →</a>
+            </div>
+        </div>
+
+        <!-- CARD 2: SIMULAÇÃO INTERATIVA -->
+        <div class="card" style="border-left: 5px solid #2563eb;">
+            <span class="badge-tag-thirdparty">Reprodução Computacional do Artigo de Terceiros</span>
+            <h2>🧪 Plataforma de Simulação e Comparação</h2>
+            <h3>Laboratório Virtual dos Modelos de Detecção de Intrusão</h3>
+            <p class="date-location">Testes 1, 2 e 3 do Artigo • Simulação no Navegador e Script Python Local</p>
+            <p>Como parte da atividade prática, implementamos um ambiente de simulação para testar e validar computacionalmente os achados do artigo de Laghari et al. Você pode comparar os modelos de <strong>ML Adaptativo</strong>, <strong>Deep Learning</strong> e <strong>Zero Trust com Clustering</strong>, observando as curvas de detecção temporal e executando o script Python nativo no terminal.</p>
+            <div style="margin-top: 1rem;">
+                <a href="simulation.html" class="action-link" style="background-color: #2563eb;">Abrir Laboratório de Simulação →</a>
+            </div>
+        </div>
+
+        <!-- CARD 3: INOVAÇÕES AUTORAIS -->
+        <div class="card" style="border-left: 5px solid #16a34a;">
+            <span class="badge-tag-authorial">Contribuição Autoral • Benjamin Silva Sergio</span>
+            <h2>💡 Inovações Autorais para Redes Elétricas Inteligentes</h2>
+            <h3>Zero Trust Ciberfísico (CP-ZTA) Aplicado a Smart Grids</h3>
+            <p class="date-location">Proposta Própria de Pesquisa • Mestrado em Engenharia Elétrica (PPGEE - UFES)</p>
+            <p>Aqui concentram-se as <strong>contribuições e inovações autorais desenvolvidas por Benjamin</strong> com base nas ideias do artigo: evolução do modelo para o domínio ciberfísico da rede elétrica, incluindo validação das Leis de Kirchhoff via Redes Neurais Informadas pela Física (PINNs) contra Injeção de Dados Falsos (FDIA), avaliação ultrarrápida em borda para subestações digitais (IEC 61850 &le; 4ms), quarentena em medidores inteligentes (AMI) sem corte de fornecimento e Zero Trust federado em microrredes.</p>
+            <div style="margin-top: 1rem;">
+                <a href="innovation.html" class="action-link" style="background-color: #16a34a;">Conhecer as Inovações Autorais em Smart Grids →</a>
+            </div>
+        </div>
+
+        <!-- PERFIL ACADÊMICO -->
         <div class="card">
-            <h2>Academic Background</h2>
-            <h3>Master's in Electrical Engineering</h3>
+            <h2>Formação Acadêmica</h2>
+            <h3>Mestrado em Engenharia Elétrica</h3>
             <p class="date-location">UFES (Universidade Federal do Espírito Santo) | Vitória, ES</p>
-            <p>Currently pursuing my Master's degree, focusing on advanced electrical systems and Smart Grids. This class activity represents the intersection of my software development background and energy infrastructure studies.</p>
+            <p>Pesquisa focada em sistemas elétricos avançados, Redes Elétricas Inteligentes (Smart Grids), automação de subestações e cibersegurança em infraestruturas críticas de energia.</p>
             
-            <h3>Bachelor's in Computer Science</h3>
+            <h3>Bacharelado em Ciência da Computação</h3>
             <p class="date-location">UFES - CEUNES | São Mateus, ES</p>
-            <p>Graduated with a strong foundation in software engineering, algorithms, and computing technology.</p>
+            <p>Sólida formação em engenharia de software, algoritmos, inteligência artificial e tecnologias de computação distribuída.</p>
         </div>
         
+        <!-- EXPERIÊNCIA PROFISSIONAL -->
         <div class="card">
-            <h2>Professional Experience</h2>
-            <h3>IT Services & Hardware Entrepreneur</h3>
-            <p class="date-location">Lajinha, MG | Jan 2026 - Present</p>
-            <p>Founder and operator of an independent tech business providing specialized computer repair, hardware maintenance, and peripheral equipment configuration services to the local community.</p>
-        </div>
-        
-        <div class="card">
-            <h2>Projects & Achievements</h2>
+            <h2>Experiência Profissional</h2>
+
+            <h3>Consultor de Sistemas</h3>
+            <p class="date-location">Fev 2026 - Ago 2026</p>
+            <p>Atuação especializada em consultoria de tecnologia e desenvolvimento de sistemas, abrangendo:</p>
             <ul>
-                <li><strong>FlightOnTime FYI:</strong> Co-developed an intelligent prediction system for flight delays, applying technical knowledge to solve real-world logistical data challenges.</li>
-                <li><strong>Hackathon ONE 2026:</strong> Official credential earner for participation and development.</li>
-                <li><strong>Smart Grids Integration:</strong> Active participant in bridging modern computer science solutions with electrical engineering challenges.</li>
+                <li><strong>Processos de ETL:</strong> Extração, transformação e carga de dados para integração entre plataformas corporativas.</li>
+                <li><strong>Sistemas ERP Senior:</strong> Utilização avançada e suporte técnico/operacional aos sistemas de gestão integrada da Senior Sistemas.</li>
+                <li><strong>Desenvolvimento de Sistemas & Bancos de Dados:</strong> Desenvolvimento de soluções e rotinas em banco de dados Oracle com PL/SQL.</li>
+                <li><strong>Relatórios & Análise de Dados:</strong> Elaboração de relatórios estratégicos e análise de dados para otimização de processos e tomada de decisão.</li>
+            </ul>
+
+            <h3 style="margin-top: 1.5rem;">Empreendedor em Serviços de TI e Hardware</h3>
+            <p class="date-location">Lajinha, MG | Jan 2026 - Presente</p>
+            <p>Fundador e gestor de empreendimento autônomo de tecnologia, prestando serviços especializados em reparo de computadores, manutenção de hardware, infraestrutura de redes e configuração de periféricos.</p>
+        </div>
+        
+        <!-- PROJETOS E CONQUISTAS -->
+        <div class="card">
+            <h2>Projetos & Conquistas</h2>
+            <ul>
+                <li><strong>FlightOnTime FYI:</strong> Co-desenvolvimento de sistema preditivo inteligente para pontualidade de voos, aplicando ciência de dados a problemas logísticos complexos.</li>
+                <li><strong>Hackathon ONE 2026:</strong> Credencial oficial obtida por desenvolvimento intensivo e participação no evento.</li>
+                <li><strong>Integração com Smart Grids:</strong> Atuação ativa na confluência entre Ciência da Computação e os desafios ciberfísicos da Engenharia Elétrica moderna.</li>
             </ul>
         </div>
     </div>
     
     <div class="footer">
-        &copy; 2026 Benjamin Silva Sergio | Smart Grids Class Activity
+        &copy; 2026 Benjamin Silva Sergio | Atividade Prática da Disciplina de Smart Grids - PPGEE UFES
     </div>
+
+    <script>
+        function toggleSpeech() {
+            if (window.toggleMiiAssistant) {
+                window.toggleMiiAssistant();
+            }
+        }
+    </script>
+    <script src="avatar-assistant.js"></script>
 </body>
 </html>

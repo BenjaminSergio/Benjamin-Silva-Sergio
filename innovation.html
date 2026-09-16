@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inovações em Smart Grids: Zero Trust Ciberfísico | Benjamin Silva Sergio</title>
+    <link rel="stylesheet" href="avatar-assistant.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #2980b9;
+            --bg-color: #f4f4f9;
+            --text-color: #2d3748;
+            --card-bg: #ffffff;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --purple-color: #8e44ad;
+            --border-color: #e2e8f0;
+            --code-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        /* Barra de Navegação Global */
+        .navbar {
+            background-color: #1a252f;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .nav-avatar-mini {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #38bdf8;
+            background-color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 0.4rem 0.85rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #fff;
+            background-color: var(--secondary-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+            color: #fff;
+            padding: 2.8rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .author-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.15);
+            color: #93c5fd;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        header h1 {
+            max-width: 950px;
+            margin: 0.5rem auto 1rem;
+            font-size: 2.1rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            opacity: 0.9;
+            color: #bfdbfe;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 0.7rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .innovation-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--secondary-color);
+            padding: 1.6rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.6rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .innovation-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .innovation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .innovation-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Fórmulas */
+        .formula-box {
+            background: #0f172a;
+            color: #38bdf8;
+            border: 1px solid #334155;
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.95rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* Comparativo Antes vs. Depois */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .comp-box {
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-size: 0.92rem;
+        }
+
+        .comp-before {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .comp-after {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 4px solid var(--success-color);
+        }
+
+        /* Visual Architecture Block */
+        .architecture-diagram {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Global -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <img src="avatar.png" alt="Avatar Benjamin" class="nav-avatar-mini">
+            Benjamin Silva Sergio | Smart Grids
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Início (Portfólio)</a>
+            <a href="article.html" class="nav-link">Artigo Científico</a>
+            <a href="simulation.html" class="nav-link">Simulação Interativa</a>
+            <a href="innovation.html" class="nav-link active">Inovações em Smart Grids</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="author-badge">Proposta Autoral • Mestrado em Engenharia Elétrica (UFES)</div>
+        <h1>Inovações Propostas: Zero Trust Ciberfísico (CP-ZTA) para Smart Grids</h1>
+        <p>Evolução do paradigma "Never Trust, Always Verify" do IIoT para a proteção da operação de subestações digitais, medição inteligente (AMI) e microrredes de energia.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- ========================================================= -->
+        <!-- INTRODUÇÃO E LACUNAS DO ARTIGO                            -->
+        <!-- ========================================================= -->
+        <div class="card">
+            <h2>🔍 Contextualização: Da Indústria Tradicional para as Redes Elétricas</h2>
+            <p>O artigo publicado na <em>Scientific Reports</em> (Laghari et al., 2025) estabelece bases sólidas para a detecção de intrusões via Zero Trust em ambientes industriais convencionais. Contudo, a transposição direta desse modelo para as <strong>Redes Elétricas Inteligentes (Smart Grids)</strong> esbarra em particularidades ciberfísicas críticas que exigem inovações profundas:</p>
+
+            <div class="comparison-container">
+                <div class="comp-box comp-before">
+                    <h4 style="color: var(--accent-color); margin-top: 0;">⚠️ Limitações do Modelo IIoT Genérico</h4>
+                    <ul>
+                        <li><strong>Cego para a Física da Rede:</strong> O IDS avalia apenas taxas e entropia de pacotes de TI, sendo incapaz de detectar ataques de Injeção de Dados Falsos (FDIA) que respeitam protocolos normais de rede mas violam fluxos de potência.</li>
+                        <li><strong>Latência Incompatível:</strong> Modelos que dependem de envio para nuvem não atendem ao requisito estrito de teleproteção em subestações digitais (norma IEC 61850, mensagens GOOSE com latência exigida de até 4 ms).</li>
+                        <li><strong>Risco de Desligamento Indevido:</strong> Bloqueios automatizados podem desconectar disjuntores críticos por falso-positivo, gerando blecautes em cascata.</li>
+                    </ul>
+                </div>
+                <div class="comp-box comp-after">
+                    <h4 style="color: var(--success-color); margin-top: 0;">✨ Inovação Proposta: Zero Trust Ciberfísico</h4>
+                    <ul>
+                        <li><strong>Validação Conjunta com Leis de Kirchhoff:</strong> O escore de confiança integra a consistência elétrica das medições de tensão e corrente dos IEDs/PMUs com a integridade dos pacotes.</li>
+                        <li><strong>Avaliação de Confiança Ultrarrápida em Borda:</strong> Motor Zero Trust leve executado localmente em relés de proteção e gateways de baía (&le; 3.5 ms).</li>
+                        <li><strong>Quarentena Sem Interrupção de Fornecimento:</strong> Isolamento do canal cibernético comprometido com preservação do fluxo elétrico para consumidores da rede de distribuição.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- AS 4 INOVAÇÕES PROPOSTAS                                  -->
+        <!-- ========================================================= -->
+        <div class="card">
+            <h2>💡 As 4 Inovações Autorais de Benjamin Silva Sergio</h2>
+
+            <!-- Inovação 1 -->
+            <div class="innovation-card">
+                <div class="innovation-header">
+                    <h3 style="margin: 0; color: var(--secondary-color);">Inovação 1: Zero Trust Ciberfísico com Redes Neurais Informadas pela Física (PINNs)</h3>
+                    <span class="innovation-tag">Estimativa de Estado</span>
+                </div>
+                <p><strong>Conceito:</strong> Em vez de avaliar apenas a assinatura do pacote IP, o motor Zero Trust correlaciona os dados telemétricos recebidos com as restrições físicas do sistema elétrico representadas por Redes Neurais Informadas pela Física (PINNs). Um nó sensor só tem sua confiança validada se as medições de potência ativa ($P$), reativa ($Q$) e fasores de tensão ($\dot{V}$) satisfizerem a Primeira e Segunda Leis de Kirchhoff:</p>
+                <div class="formula-box">
+                    Resíduo_Físico (i) = | P_injetada(i) - ∑ [ V_i · V_j · (G_ij · cos(θ_ij) + B_ij · sin(θ_ij)) ] |
+                    Se Resíduo_Físico (i) > ε_tolerância  →  Rebaixar Confiança Imediatamente (Alerta de FDIA)
+                </div>
+                <p><strong>Impacto:</strong> Elimina ataques sofisticados de injeção de dados falsos que manipulam despachos econômicos no Operador Nacional do Sistema (ONS) sem gerar anomalias estatísticas de tráfego de rede.</p>
+            </div>
+
+            <!-- Inovação 2 -->
+            <div class="innovation-card">
+                <div class="innovation-header">
+                    <h3 style="margin: 0; color: #0284c7;">Inovação 2: Avaliação Contínua de Confiança em Borda para IEDs e PMUs (IEC 61850)</h3>
+                    <span class="innovation-tag">Subestações Digitais</span>
+                </div>
+                <p><strong>Conceito:</strong> Adaptação da arquitetura de micro-segmentação para o nível de processo e baía (*bay level*) de subestações automatizadas sob a norma IEC 61850. O cálculo de confiança é realizado localmente em hardware dedicado (FPGAs ou microprocessadores de tempo real), garantindo tempo de decisão de <strong>&le; 3,2 milissegundos</strong> para mensagens críticas GOOSE e Sampled Values (SV).</p>
+                <p><strong>Micro-Segmentação Dinâmica:</strong> Se um relé IED apresentar comportamento anômalo, a política de menor privilégio isola dinamicamente suas portas de rede externa sem desarmar a sua função de proteção intrínseca de sobrecorrente (50/51).</p>
+            </div>
+
+            <!-- Inovação 3 -->
+            <div class="innovation-card">
+                <div class="innovation-header">
+                    <h3 style="margin: 0; color: var(--success-color);">Inovação 3: Quarentena Cibernética em AMI com Preservação de Continuidade</h3>
+                    <span class="innovation-tag">Medição Inteligente</span>
+                </div>
+                <p><strong>Conceito:</strong> Na Infraestrutura Avançada de Medição (AMI), medidores inteligentes residenciais e comerciais estão sujeitos a ataques físicos e adulterações de firmware. Propomos uma política Zero Trust de "Desacoplamento Seguro":</p>
+                <ul>
+                    <li>Quando um medidor inteligente é reprovado na inspeção contínua de integridade, seu canal de transmissão de dados é colocado em <strong>quarentena isolada</strong> (bloqueio de comandos remotos de corte).</li>
+                    <li>O relé de acionamento de potência física é mantido no estado normal para evitar cortes maliciosos de energia a clientes e hospitais. A fatura passa temporariamente para estimativa regulatória histórica até saneamento presencial.</li>
+                </ul>
+            </div>
+
+            <!-- Inovação 4 -->
+            <div class="innovation-card">
+                <div class="innovation-header">
+                    <h3 style="margin: 0; color: var(--purple-color);">Inovação 4: Zero Trust Federado de Borda para Microrredes Ilhadas (DERs + BESS)</h3>
+                    <span class="innovation-tag">Geração Distribuída</span>
+                </div>
+                <p><strong>Conceito:</strong> Em microrredes modernas com inversores solares fotovoltaicos, sistemas de baterias (BESS) e carregadores de veículos elétricos, a conexão com a nuvem central da concessionária pode ser interrompida durante tempestades ou eventos de ilhamento (*islanding mode*).</p>
+                <p>A arquitetura proposta emprega <strong>Aprendizado Federado de Borda (Edge-FL)</strong> em que os controladores de microrrede trocam apenas parâmetros de gradiente de anomalia entre si, mantendo a proteção autônoma e a privacidade dos dados de consumo dos prosumidores.</p>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- MODELO MATEMÁTICO EXPANDIDO                               -->
+        <!-- ========================================================= -->
+        <div class="card">
+            <h2>📐 Modelo Matemático Estendido: Índice de Confiança Ciberfísico ($T_{\text{grid}}$)</h2>
+            <p>Expandindo as Equações 1 a 7 do artigo da Nature, propomos a formulação unificada para o cálculo dinâmico da confiança do nó elétrico $i$ no instante $t$:</p>
+
+            <div class="formula-box">
+                T_grid(i, t) = w_c · T_cyber(i, t) + w_p · T_physics(i, t) + w_r · T_reputação(i, t) · e^(-λ · Δt)
+
+                Onde:
+                - w_c, w_p, w_r ∈ [0, 1] com w_c + w_p + w_r = 1.0 (Pesos calibrados por otimização)
+                - T_cyber(i, t) = 1.0 - Risco_ML(pacotes, entropia, certificados_mTLS)
+                - T_physics(i, t) = exp( - (Resíduo_KCL^2 + Resíduo_KVL^2) / 2σ^2 )
+                - e^(-λ · Δt) = Decaimento temporal que penaliza nós silenciosos ou inativos
+            </div>
+
+            <h3>Critério de Ação do PDP (Policy Decision Point) na Subestação</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Faixa de Escore ($T_{\text{grid}}$)</th>
+                            <th>Estado de Acesso Zero Trust</th>
+                            <th>Ação Automática de Controle Ciberfísico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>0.85 &le; T &le; 1.00</strong></td>
+                            <td style="color: var(--success-color); font-weight: bold;">Plenamente Confiável</td>
+                            <td>Acesso liberado para telemetria, medições fasoriais e comandos de controle.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>0.50 &le; T &lt; 0.85</strong></td>
+                            <td style="color: var(--warning-color); font-weight: bold;">Verificação Condicional</td>
+                            <td>Aumento da taxa de telemetria; comandos de chaveamento exigem dupla assinatura de engenheiro.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>0.00 &le; T &lt; 0.50</strong></td>
+                            <td style="color: var(--accent-color); font-weight: bold;">Bloqueio & Quarentena</td>
+                            <td>Isolamento imediato na VLAN de quarentena; geração de alarme SCADA; acionamento de proteção local autônoma.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- DIAGRAMA DA ARQUITETURA PROPOSTA                          -->
+        <!-- ========================================================= -->
+        <div class="card">
+            <h2>🏛️ Topologia da Arquitetura Ciberfísica Zero Trust</h2>
+            <div class="architecture-diagram">
++-----------------------------------------------------------------------------------------------+
+|                            CENTRO DE OPERAÇÃO E CONTROLE (SCADA / ONS)                        |
+|   - Orquestrador de Políticas Zero Trust (PDP Central)                                        |
+|   - Servidor de Aprendizado Federado Global & Analítica de Longo Prazo                        |
++-----------------------------------------------+-----------------------------------------------+
+                                                | Túneis Criptografados SASE (IPsec / WireGuard)
+                                                v
++-----------------------------------------------------------------------------------------------+
+|                  SUBESTAÇÃO DIGITAL / GATEWAY DE BORDA DE BAIXA LATÊNCIA                      |
+|   +--------------------------+   +--------------------------+   +-------------------------+   |
+|   | Motor Zero Trust de Borda|   |  Validador Físico (PINN) |   | Microrsegmentação Dinâm.|   |
+|   |  (ML Adaptativo ≤ 3.2ms) |<->|  (Fluxo AC / Leis LKT)   |<->| (VLANs / Firewall Borda)|   |
+|   +--------------------------+   +--------------------------+   +-------------------------+   |
++-----------------------------------------------+-----------------------------------------------+
+                                                | Barramento de Processo (IEC 61850 SV / GOOSE)
+                                                v
++-----------------------------------------------------------------------------------------------+
+|                          CAMADA OPERACIONAL CIBERFÍSICA DE CAMPO                              |
+|   [ IEDs de Proteção ]     [ PMUs Fasoriais ]     [ Inversores Solares ]     [ Smart Meters ] |
+|   (Relés 50/51 / 21)       (Medição Sincrofasor)  (Microrredes / BESS)       (Medição AMI)    |
++-----------------------------------------------------------------------------------------------+
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- APLICAÇÃO NO CONTEXTO UFES / BRASIL                       -->
+        <!-- ========================================================= -->
+        <div class="card">
+            <h2>🎓 Contribuição para a Engenharia Elétrica na UFES</h2>
+            <p>Esta proposta conecta diretamente a graduação em <strong>Ciência da Computação</strong> com a pesquisa de mestrado em <strong>Engenharia Elétrica (PPGEE - UFES)</strong> na linha de Redes Elétricas Inteligentes:</p>
+            <ul>
+                <li><strong>Alinhamento com Normas Nacionais:</strong> Atende às exigências das Resoluções Normativas da ANEEL e aos Procedimentos de Rede do ONS para segurança cibernética de instalações do Sistema Interligado Nacional (SIN).</li>
+                <li><strong>Publicação Científica Potencial:</strong> Estrutura pronta para redação de artigo científico com submissão direcionada a periódicos qualificados da área (como <em>IEEE Transactions on Smart Grid</em> ou <em>IEEE Access</em>).</li>
+                <li><strong>Próximos Passos Experimentais:</strong> Implementação em bancada com simulação em tempo real de hardware-in-the-loop (HIL) utilizando OPAL-RT / RTDS integrados aos algoritmos desenvolvidos em Python.</li>
+            </ul>
+
+            <div style="margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="simulation.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--secondary-color); color: #fff; text-decoration: none; padding: 0.65rem 1.3rem; border-radius: 6px; font-weight: bold; transition: all 0.2s ease;">← Ver Simulação Prática</a>
+                <a href="article.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--primary-color); color: #fff; text-decoration: none; padding: 0.65rem 1.3rem; border-radius: 6px; font-weight: bold; transition: all 0.2s ease;">Consultar Artigo Base da Nature →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Benjamin Silva Sergio • Programa de Mestrado em Engenharia Elétrica (UFES)</p>
+        <p>Atividade Prática da Disciplina de Smart Grids • Inovações Autorais em Segurança Ciberfísica</p>
+        <p><a href="index.html" style="color: var(--secondary-color); font-weight: bold; text-decoration: none;">← Voltar para a Página Principal</a></p>
+    </footer>
+
+    <script src="avatar-assistant.js"></script>
+</body>
+</html>
+
